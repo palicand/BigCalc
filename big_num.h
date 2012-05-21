@@ -45,9 +45,9 @@ private:
 	size_t decimal;
 	size_t filled_blocks;
 	bool negative;
-	static const byte MAX_NUM = (0 - 1);
-	static const int BITS = CHAR_BIT * sizeof(byte);
-	static const size_t START_ALLOCATION = 1000;
+	static const byte MAX_NUM;
+	static const int BITS;
+	static const size_t START_ALLOCATION;
 	void from_string(const std::string& src);
 	std::string to_string() const;
 	void add_digit(char digit);

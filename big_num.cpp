@@ -1,7 +1,9 @@
 #include "big_num.h"
 #include <algorithm>
 
-
+const byte big_num::MAX_NUM = 0 - 1;
+const int big_num::BITS = CHAR_BIT * sizeof(byte);
+const size_t big_num::START_ALLOCATION = 1000;
 big_num::big_num(int n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;
@@ -11,7 +13,7 @@ big_num::big_num(int n) : number(big_num::START_ALLOCATION, 0)
 		invert();
 		negative = true;
 	}
-	number[0] = n;
+	number[0] = (byte)n;
 	decimal = 0;
 }
 
@@ -49,7 +51,7 @@ big_num& big_num::operator=(int n)
 {
 	number.assign(big_num::START_ALLOCATION, 0);
 	filled_blocks = 1;
-	number[0] = n;
+	number[0] =(byte) n;
 	if(n < 0)
 	{
 		invert();

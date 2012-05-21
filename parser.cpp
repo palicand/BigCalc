@@ -91,8 +91,6 @@ base_node* parser::get_factor()
 	}
 	else
 		throw parse_exception("invalid input");
-	
-	return NULL;
 }
 
 bool parser::is_number(const std::string& str) const

@@ -1,7 +1,6 @@
 #include "big_num.h"
 #include <algorithm>
 
-const byte big_num::MAX_NUM;
 
 big_num::big_num(int n) : number(big_num::START_ALLOCATION, 0)
 {
@@ -393,7 +392,7 @@ void big_num::normalize(big_num& other)
 
 void big_num::dec_shift_left(size_t n)
 {
-	for(int i = 0; i < n; i++)
+	for(size_t i = 0; i < n; i++)
 	{
 		(*this) *= 10;
 		decimal++;

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __OP_NODE_H__
+#define __OP_NODE_H__
 #include "base_node.h"
 class op_node :
 	public base_node
@@ -10,4 +11,4 @@ public:
 protected:
 	base_node* left, *right;
 };
-
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __MUL_NODE_H__
+#define __MUL_NODE_H__
 #include "op_node.h"
 class mul_node :
 	public op_node
@@ -8,4 +9,4 @@ public:
 	virtual ~mul_node(void);
 	virtual big_num eval() const;
 };
-
+#endif

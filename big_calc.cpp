@@ -79,6 +79,7 @@ int file_input_mode(const std::string& filename)
 			delete expr;
 		}
 	}
+	return 0;
 }
 
 int get_mode(int argc, char** argv)

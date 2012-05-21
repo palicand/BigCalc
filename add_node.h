@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __ADD_NODE_H__
+#define __ADD_NODE_H__
 #include "op_node.h"
 class add_node :
 	public op_node
@@ -8,4 +9,4 @@ public:
 	virtual big_num eval() const;
 	virtual ~add_node(void);
 };
-
+#endif

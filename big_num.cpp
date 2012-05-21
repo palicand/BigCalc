@@ -1,6 +1,8 @@
 #include "big_num.h"
 #include <algorithm>
 
+const byte big_num::MAX_NUM;
+
 big_num::big_num(int n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;

@@ -37,7 +37,7 @@ public:
 int interactive_mode()
 {
 	std::string line;
-	base_node* expr;
+	base_node* expr = NULL;
 	while(!std::getline(std::cin, line).eof() && line != "q")
 	{
 		try {

@@ -24,7 +24,15 @@ base_node* parser::create_tree()
 {
 	base_node* node = NULL;
 	current_token = tok.next_token();
-	node = get_expression();
+	try
+	{
+		node = get_expression();
+	}
+	catch(parse_exception& e)
+	{
+		delete node;
+		throw;
+	}
 	return node;
 }
 
@@ -35,19 +43,27 @@ base_node* parser::get_expression()
 	/*if(current_token == "-")
 	{
 	}*/
-	res = get_term();
-	while(current_token == "+" || current_token == "-")
+	try {
+		res = get_term();
+		while(current_token == "+" || current_token == "-")
+		{
+			if(current_token == "+")
+			{
+				current_token = tok.next_token();
+				res = new add_node(res, get_term());
+			}
+			else
+			{
+				current_token = tok.next_token();
+				res = new sub_node(res, get_term());
+			}
+		}
+	}
+	catch(parse_exception& e)
 	{
-		if(current_token == "+")
-		{
-			current_token = tok.next_token();
-			res = new add_node(res, get_term());
-		}
-		else
-		{
-			current_token = tok.next_token();
-			res = new sub_node(res, get_term());
-		}
+		delete res;
+
+		throw;
 	}
 	return res;
 }
@@ -56,22 +72,28 @@ base_node* parser::get_term()
 {
 	//current_token = tok.next_token();
 	base_node* res = NULL;
-	
-	res = get_factor();
-	while(current_token == "*")
-	{
-		if(current_token == "*")
+	try {
+		res = get_factor();
+		while(current_token == "*")
 		{
-			current_token = tok.next_token();
-			res = new mul_node(res, get_factor());
+			if(current_token == "*")
+			{
+				current_token = tok.next_token();
+				res = new mul_node(res, get_factor());
+			}
 		}
+	}
+	catch(parse_exception& e)
+	{
+		delete res;
+		throw;
 	}
 	return res;
 }
 
 base_node* parser::get_factor()
 {
-	base_node* res;
+	base_node* res = NULL;
 	if(is_number(current_token))
 	{
 		res = new num_node(current_token);
@@ -84,6 +106,7 @@ base_node* parser::get_factor()
 		res = get_expression();
 		if(current_token != ")")
 		{
+			delete res;
 			throw parse_exception("missing right parenthesis");
 		}
 		current_token = tok.next_token();

@@ -58,7 +58,7 @@ int interactive_mode()
 
 int file_input_mode(const std::string& filename)
 {
-	std::ifstream input(filename);
+	std::ifstream input(filename.c_str());
 	if(input.fail())
 		throw bad_file_exception("either file doesn't exist, or you don't have enough permission for reading it");
 	std::string line;

@@ -13,7 +13,7 @@
 
 \fn num_node::num_node(const std::string&)
 \brief constructs the num_node with the number passed in string
-\param num the string representation of a number
+\param val the string representation of a number
 
 \fn num_node::eval() const
 \brief returns the number contained in the node

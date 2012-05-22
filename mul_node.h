@@ -21,7 +21,7 @@
 \details calls the \ref base_node::eval() on the \ref op_node::left and \ref op_node::right subtrees and then multiplicates the numbers that the function returns.
 \return the result of the multiplication
 
-\fn mul_node::~add_node()
+\fn mul_node::~mul_node()
 \brief destroys the tree
 \details calls delete on both sides of the expression, therefore causing a recursive descent and deletion of all resources on both subtrees
 */

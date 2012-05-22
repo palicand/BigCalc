@@ -11,7 +11,7 @@
 
 \class bad_file_exception
 \brief Thrown when user enters bad comand-line arguments
-\details Gets thrown only in \ref file_input_mode(const string&) when the file either doesn't exist, the user doesn't have enough permissions to open it or if it was somehow
+\details Gets thrown only in \ref file_input_mode(const std::string&) when the file either doesn't exist, the user doesn't have enough permissions to open it or if it was somehow
 corrupted
 
 \fn bad_file_exception::bad_file_exception(const std::string&)
@@ -41,5 +41,5 @@ was in incorrect format, it prints the error and corresponding number of the exp
 
 int interactive_mode();
 int file_input_mode(const std::string& filename);
-void open_file(const std::string& filename);
+
 #endif

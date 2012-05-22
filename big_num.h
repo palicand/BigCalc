@@ -35,7 +35,7 @@ the decimal point in the decimal representation of the number, which it updates 
 
 \fn big_num::operator=(signed char)
 \brief destroys the current content and creates new number from the passed number
-\param the small source number
+\param num the small source number
 \return the reference to calling object
 
 */

@@ -14,8 +14,8 @@
 /**
 \class parser
 \brief Class responsible for parsing of the input expression
-
-The parser uses the shunting yard algorithm
+\details The parser creates the asymptotic syntax tree from the classes, that are derived from \ref base_node. It was inspired by Mr. Vagners 6th proseminar
+and by http://math.hws.edu/javanotes/c9/s5.html. It recursively costructs the tree modeling the expression by going through each token and creating the appropriate node for it.
 
 \fn parser::parser(const std::string&)
 \brief the constructor of parser

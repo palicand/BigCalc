@@ -7,7 +7,7 @@
 
 \class base_node
 \brief The base type of a syntactic tree node
-\detail The abstract base class for all the nodes of the tree. If you want to extend the grammar of the tree, you should inherit either from this class, or from any other
+\details The abstract base class for all the nodes of the tree. If you want to extend the grammar of the tree, you should inherit either from this class, or from any other
 abstract child of this class (for example like the \ref op_node). This class provides the abstract method \ref base_node::eval(), which you must call in order to evaluate the value
 of the expression.
 
@@ -16,14 +16,14 @@ of the expression.
 
 \fn base_node::eval() const
 \brief method for an evaluation of the expression
-\detail as each node type represents a different element of the expression, they all behave quite differently. The base_node::eval() method provides the different behavior for 
+\details as each node type represents a different element of the expression, they all behave quite differently. The base_node::eval() method provides the different behavior for 
 each expression element. In order to add a support for a new expression element, not only you must inherit from the base_node, but you must also override this method and define
 its behavior.
 \return the value of the expression in \ref big_num
 
 \fn base_node::~base_node()
 \brief destroys the node
-\detail Inherited classes should specify their of method of destruction
+\details Inherited classes should specify their of method of destruction
 */
 
 class base_node

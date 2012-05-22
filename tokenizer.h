@@ -7,19 +7,19 @@
 
 \class tokenizer
 \brief Tokenizes the input string
-\detail Stores the string into its member variable \ref str and returns each token by calling \ref next_token(const std::string&).
+\details Stores the string into its member variable \ref str and returns each token by calling \ref next_token(const std::string&).
 \fn tokenizer::tokenizer(const std::string&)
 \brief constructs the tokenizer with the passed string
 \param input_str the strig to be tokenized
 
 \fn tokenizer::next_token()
 \brief gets the next token from the string
-\detail It skips all the whitespace characters and hen either returns the next character, or, if the next character is a digit, it returns the whole number 
+\details It skips all the whitespace characters and hen either returns the next character, or, if the next character is a digit, it returns the whole number 
 (including up to one decimal point).
 \return a token to be parsed by \ref parser
 \fn get_nuber()
 \brief gets all the digits of a number
-\detail called by \ref next_token() whe a digit is encountered, it iterates through the string until something else that can't belong to a number is encountered.
+\details called by \ref next_token() whe a digit is encountered, it iterates through the string until something else that can't belong to a number is encountered.
 It stores the number in the \ref number member variable
 
 \var str

@@ -16,12 +16,12 @@
 
 \fn add_node::eval() const
 \brief performs the add operation on the left and right subexpressions
-\detail calls the \ref base_node::eval() on the \ref left and \ref right subtrees and then adds the numbers that the function returns.
+\details calls the \ref base_node::eval() on the \ref left and \ref right subtrees and then adds the numbers that the function returns.
 \return the result of the addition
 
 \fn add_node::~add_node()
 \brief destroys the tree
-\detail calls delete on both sides of the expression, therefore causing a recursive descent and deletion of all resources on both subtrees
+\details calls delete on both sides of the expression, therefore causing a recursive descent and deletion of all resources on both subtrees
 */
 class add_node :
 	public op_node

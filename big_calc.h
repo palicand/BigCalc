@@ -11,7 +11,7 @@
 
 \class bad_file_exception
 \brief Thrown when user enters bad comand-line arguments
-\detailed Gets thrown only in \ref file_input_mode(const string&) when the file either doesn't exist, the user doesn't have enough permissions to open it or if it was somehow
+\details Gets thrown only in \ref file_input_mode(const string&) when the file either doesn't exist, the user doesn't have enough permissions to open it or if it was somehow
 corrupted
 
 \fn bad_file_exception::bad_file_exception(const std::string&)
@@ -21,14 +21,14 @@ corrupted
 \fn interactive_mode()
 \brief The interactive mode of the application
 \return returns 0
-\detailed The program reads one expression per line from a standard input. It stops reading either when end of line is encountered, or when the key "q" is pressed. It either prints the result, or if the 
+\details The program reads one expression per line from a standard input. It stops reading either when end of line is encountered, or when the key "q" is pressed. It either prints the result, or if the 
 input is incorrectly formatted, an error message describing the mistake in the input on the newline right after the entered expression.
 
 \fn file_input_mode(const std::string&)
 \brief Reads the expressions from the input file
 \param filename The name of the input file
 \return Returns 0, if everything went all right or throws the \ref bad_file_exception if there was a problem while opening or reading the file
-\detailed While in the file input mode, the program reads expressions separated either by a newline or a semicolon. Each result is printed on a new line. If some expression
+\details While in the file input mode, the program reads expressions separated either by a newline or a semicolon. Each result is printed on a new line. If some expression
 was in incorrect format, it prints the error and corresponding number of the expression and the continues computing the others
 
 \fn main(int, char**)

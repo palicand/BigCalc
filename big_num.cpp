@@ -363,13 +363,18 @@ std::string big_num::to_string() const
 		temp.negative = false;
 		temp.invert();
 	}
+	bool point = false;
 	while(temp > 0)
 	{
 		res += ('0' + temp % 10);
 		temp = temp/10;
-		temp.decimal--;
-		if(temp.decimal == 0)
+		if(temp.decimal == 0 && !point)
+		{
 			res+='.';
+			point = true;
+		}
+		else if(temp.decimal != 0)
+			temp.decimal--;
 	}
 	while(temp.decimal != 0 && temp.decimal != (size_t)0-1)
 	{

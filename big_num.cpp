@@ -280,7 +280,8 @@ void big_num::invert()
 
 void big_num::add_to(size_t i, byte n)
 {
-	if(i >= number.size())
+	std::cout << "adding to " << i << std::endl;
+	if(i > (number.size() - 1))
 	{
 		if(negative)
 			number.resize((i + 1) * 1.5, big_num::MAX_NUM);
@@ -369,6 +370,13 @@ std::string big_num::to_string() const
 		temp.decimal--;
 		if(temp.decimal ==0)
 			res+='.';
+	}
+	while(temp.decimal != 0)
+	{
+		res += "0";
+		temp.decimal--;
+		if(temp.decimal == 0)
+			res += ".0";
 	}
 	if(*(res.end()-1) == '.')
 		res += '0';

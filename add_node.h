@@ -3,7 +3,8 @@
 #include "op_node.h"
 
 /**
-\file contains the declaration of \ref add_node
+\file 
+\brief contains the declaration of \ref add_node
 
 \class add_node
 \brief the node representing the adding operation

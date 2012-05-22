@@ -3,7 +3,8 @@
 #include "big_num.h"
 
 /**
-\file containt the \ref base_node class declaration
+\file 
+\brief contains the \ref base_node class declaration
 
 \class base_node
 \brief The base type of a syntactic tree node

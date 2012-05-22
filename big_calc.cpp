@@ -17,7 +17,7 @@ corrupted
 \detailed The program reads one expression per line from a standard input. It stops reading either when end of line is encountered, or when the key "q" is pressed. It either prints the result, or if the 
 input is incorrectly formatted, an error message describing the mistake in the input on the newline right after the entered expression.
 
-\fn file_input_mode(const string&)
+\fn file_input_mode(const std::string&)
 \brief Reads the expressions from the input file
 \param filename The name of the input file
 \return Returns 0, if everything went all right or throws the \ref bad_file_exception if there was a problem while opening or reading the file

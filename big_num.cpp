@@ -3,7 +3,7 @@
 
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
-const size_t big_num::START_ALLOCATION = 1000;
+const size_t big_num::START_ALLOCATION = 100;
 big_num::big_num(int n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;
@@ -76,6 +76,7 @@ big_num& operator+=(big_num& a, const big_num& b)
 	double_byte carry = 0;
 	size_t i = 0;
 	big_num tempB = b;
+	a.set_same_size(tempB);
 	a.normalize(tempB);
 	if(a.abs() == tempB.abs() && a.negative != tempB.negative)
 	{
@@ -137,6 +138,7 @@ big_num& operator*=(big_num& a, const big_num& b)
 		ret.negative = false;
 	big_num tempA = a;
 	big_num tempB = b;
+	tempA.set_same_size(tempB);
 	if(a.negative)
 	{
 		tempA.negative = false;
@@ -281,9 +283,9 @@ void big_num::add_to(size_t i, byte n)
 	if(i >= number.size())
 	{
 		if(negative)
-			number.resize(i, big_num::MAX_NUM);
+			number.resize((i + 1) * 1.5, big_num::MAX_NUM);
 		else
-			number.resize(i, 0);
+			number.resize((i + 1) * 1.5, 0);
 	}
 	if(i >= filled_blocks && n != number[i])
 		filled_blocks = i + 1;
@@ -421,3 +423,12 @@ big_num big_num::operator-() const
 	ret.negative = !ret.negative;
 	return ret;
 }
+
+void big_num::set_same_size(big_num& other)
+{
+	if(this->number.size() > other.number.size())
+		other.number.resize(this->number.size());
+	else if(this->number.size() < other.number.size())
+		this->number.resize(other.number.size());
+}
+

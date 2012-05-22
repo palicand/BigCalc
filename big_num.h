@@ -29,13 +29,7 @@ public:
 	friend big_num operator-(const big_num& a, const big_num& b);
 	friend big_num& operator*=(big_num& a, const big_num& b);
 	friend big_num operator*(const big_num& a, const big_num& b);
-	friend big_num operator/(const big_num& a, byte b);
-	friend byte operator%(const big_num& a, byte b);
 	//comparison operators
-	bool operator==(const big_num& other) const;
-	bool operator>(const big_num& other) const;
-	bool operator<(const big_num& other) const;
-	bool operator!=(const big_num& other) const;
 	big_num operator-() const;
 	
 	friend std::ostream& operator<<(std::ostream& os, const big_num& num);
@@ -55,6 +49,14 @@ private:
 	void add_to(size_t i, byte n);
 	void normalize(big_num& other);
 	void dec_shift_left(size_t n);
+	void set_same_size(big_num& other);
+
+	bool operator==(const big_num& other) const;
+	bool operator>(const big_num& other) const;
+	bool operator<(const big_num& other) const;
+	bool operator!=(const big_num& other) const;
+	friend big_num operator/(const big_num& a, byte b);
+	friend byte operator%(const big_num& a, byte b);
 };
 
 #endif

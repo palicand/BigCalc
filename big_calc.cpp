@@ -9,6 +9,10 @@ This define makes the source about 20% cooler!
 \exception bad_arg_exception
 \brief Thrown when user enters bad comand-line arguments
 
+\fn interactive_mode()
+\brief The interactive mode of the application
+
+
 \fn main(int, char**)
 Starting point for the application, main is responsible for creating objects and calling functions that manage I/O, parse the input and do the calculations
 \param argc Number of arguments, must be at least 2, because we have to determine the mode of input (interactive/from file)
@@ -46,11 +50,13 @@ int interactive_mode()
 		catch(parse_exception& e)
 		{
 			std::cerr << "parse pony is very sad :-(\nerror: " << e.what() << std::endl;
+			delete expr;
+			expr = NULL;
 		}
 		if(expr != NULL)
 		{
 			std::cout << expr->eval() << std::endl;
-			delete expr;
+ 			delete expr;
 		}
 	}
 	return 0;

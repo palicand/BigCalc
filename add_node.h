@@ -10,7 +10,7 @@
 \brief the node representing the adding operation
 
 
-\fn add_node::add_node(const base_node*, const base_node*)
+\fn add_node::add_node(base_node*, base_node*)
 \brief constructs the add node
 \param left the left root of the sutree representing the left subexpression
 \param right the right root of the sutree representing the right subexpression
@@ -28,7 +28,7 @@ class add_node :
 	public op_node
 {
 public:
-	add_node(const base_node* left, const base_node* right);
+	add_node(base_node* left, base_node* right);
 	virtual big_num eval() const;
 	virtual ~add_node();
 };

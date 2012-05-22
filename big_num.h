@@ -62,15 +62,56 @@ public:
 	big_num& operator=(signed char num);
 	//arihmetic operators
 	/**
-	\brief the adition operation
+	\brief Adds a and b and stores the result in a
+	\param a the left operand
+	\param b the right operand
+	\return reference to the a
 	*/
 	friend big_num& operator+=(big_num& a, const big_num& b);
+
+	/**
+	\brief adds the a and b and returns the result
+	\param a the left operand
+	\param b the right operand
+	\return the result
+
+	\details 
+	*/
 	friend big_num operator+(const big_num& a, const big_num& b);
+	/**
+	\brief Subracts b from a and stores the result in a
+	\param a the left operand
+	\param b the right operand
+	\return the reference to a
+	*/
 	friend big_num& operator-=(big_num& a, const big_num& b);
+	/**
+	\brief Subracts b from a and returns the result
+	\param a the left operand
+	\param b the right operand
+	\return The result
+	*/
 	friend big_num operator-(const big_num& a, const big_num& b);
+	/**
+	\brief multiplies a by b and stores the result in a
+	\param a the left operand
+	\param b the right operand
+	\return the reference to a
+	*/
 	friend big_num& operator*=(big_num& a, const big_num& b);
+
+	/**
+	\brief multiplies a by b and returns the result
+	\param a the left operand
+	\param b the right operand
+	\return the result
+	*/
 	friend big_num operator*(const big_num& a, const big_num& b);
-	//comparison operators
+
+	/**
+	\brief the unary - operator, it returns the number with inverted sign
+	\return the inverted number
+	*/
 	big_num operator-() const;
 	
 	friend std::ostream& operator<<(std::ostream& os, const big_num& num);

@@ -17,7 +17,7 @@
 
 \fn add_node::eval() const
 \brief performs the add operation on the left and right subexpressions
-\details calls the \ref base_node::eval() on the \ref left and \ref right subtrees and then adds the numbers that the function returns.
+\details calls the \ref base_node::eval() on the \ref op_node::left and \ref op_node::right subtrees and then adds the numbers that the function returns.
 \return the result of the addition
 
 \fn add_node::~add_node()

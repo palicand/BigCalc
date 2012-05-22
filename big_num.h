@@ -45,8 +45,13 @@ the decimal point in the decimal representation of the number, which it updates 
 #include <climits>
 #include <iostream>
 #include <cmath>
-
+/**
+\brief The type of one block of array used for the representation of a number
+*/
 typedef unsigned char byte;
+/**
+\brief The type that has 2x more bits than the byte
+*/
 typedef unsigned short double_byte;
 
 class big_num
@@ -114,7 +119,17 @@ public:
 	*/
 	big_num operator-() const;
 	
+	/**
+	\brief Prints the number to the defined output stream
+	\param os the output stream
+	\param num the number to be printed
+	\return the modified output stream
+	*/
 	friend std::ostream& operator<<(std::ostream& os, const big_num& num);
+
+	/**
+	\brief the absolute value of a number
+	*/
 	big_num abs() const;
 private:
 	std::vector<byte> number;

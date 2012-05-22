@@ -24,8 +24,10 @@
 \details Recursivelly computes the value of the expression. It first calls eval() on both left and right subtrees, therefore recursively descents until it reaches \ref num_node
 which just returns the \ref big_num representation. It then performs it's respective operation with the returned values.
 
-\var op_node::left The left subtree
-\var op_node::right The right subtree
+\var base_node* op_node::left 
+\brief The left subtree
+\var base_node* op_node::right 
+\brief The right subtree
 */
 class op_node :
 	public base_node

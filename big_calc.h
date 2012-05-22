@@ -38,7 +38,7 @@ was in incorrect format, it prints the error and corresponding number of the exp
 
 */
 #define __PONY__ "pony is the most awesome creature in the whole universe!!!!"
-int get_mode(int argc);
+
 int interactive_mode();
 int file_input_mode(const std::string& filename);
 void open_file(const std::string& filename);

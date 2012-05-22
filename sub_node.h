@@ -16,7 +16,7 @@
 \fn sub_node::~sub_node()
 \brief destroys the sub_node and its subtrees
 
-\fn eval() const
+\fn sub_node::eval() const
 \brief subtracts the value in right subtree from value in left subtree
 \details calls eval() on both subtrees and then subtracts the values. 
 \return the result

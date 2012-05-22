@@ -3,7 +3,7 @@
 
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
-const size_t big_num::START_ALLOCATION = 100;
+const size_t big_num::START_ALLOCATION = 4;
 big_num::big_num(signed char n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;
@@ -76,8 +76,8 @@ big_num& operator+=(big_num& a, const big_num& b)
 	double_byte carry = 0;
 	size_t i = 0;
 	big_num tempB = b;
-	a.set_same_size(tempB);
 	a.normalize(tempB);
+	a.set_same_size(tempB);
 	if(a.abs() == tempB.abs() && a.negative != tempB.negative)
 	{
 		return (a=0);
@@ -293,22 +293,18 @@ void big_num::add_to(size_t i, byte n)
 	number[i] = n;
 }
 
-big_num operator/(const big_num& a, byte b)
+big_num& operator/=(big_num& a, byte b)
 {
-	big_num res;
 	double_byte temp = 0;
-	for(int i = a.number.size() - 1; i >= 0; i--)
+	for(int i = (a.number.size() - 1); i >= 0; i--)
 	{
 		temp |= a.number[i];
-		res.add_to(i, (byte)(temp / b));
+		a.add_to(i, (byte)(temp / b));
 		temp =  (temp % b) << (sizeof(byte) * 8);
 	}
-	if(res.number[a.filled_blocks-1] == 0)
-		res.filled_blocks = a.filled_blocks-1;
-	else
-		res.filled_blocks = a.filled_blocks;
-	res.decimal = a.decimal;
-	return res;
+	if(a.number[a.filled_blocks-1] == 0)
+		a.filled_blocks--;
+	return a;
 }
 
 byte operator%(const big_num& a, byte b)
@@ -364,10 +360,12 @@ std::string big_num::to_string() const
 		temp.invert();
 	}
 	bool point = false;
+	if(temp.decimal == 0)
+		point = true;
 	while(temp > 0)
 	{
 		res += ('0' + temp % 10);
-		temp = temp/10;
+		temp/=10;
 		if(temp.decimal == 0 && !point)
 		{
 			res+='.';
@@ -376,12 +374,18 @@ std::string big_num::to_string() const
 		else if(temp.decimal != 0)
 			temp.decimal--;
 	}
-	while(temp.decimal != 0 && temp.decimal != (size_t)0-1)
+	while(temp.decimal != 0 || !point)
 	{
-		res += "0";
-		temp.decimal--;
 		if(temp.decimal == 0)
+		{
+			point = true;
 			res += ".0";
+		}
+		else
+		{
+			res += "0";
+			temp.decimal--;
+		}
 	}
 	if(*(res.end()-1) == '.')
 		res += '0';

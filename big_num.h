@@ -152,7 +152,7 @@ private:
 	bool operator>(const big_num& other) const;
 	bool operator<(const big_num& other) const;
 	bool operator!=(const big_num& other) const;
-	friend big_num operator/(const big_num& a, byte b);
+	friend big_num& operator/=(big_num& a, byte b);
 	friend byte operator%(const big_num& a, byte b);
 };
 

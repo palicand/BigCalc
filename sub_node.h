@@ -2,7 +2,8 @@
 #define __SUB_NODE_H__
 #include "op_node.h"
 /**
-\file contains the declaration of \ref sub_node
+\file 
+\brief contains the declaration of \ref sub_node
 
 \class sub_node
 \brief class used to represent a subtracting operation

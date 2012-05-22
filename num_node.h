@@ -4,7 +4,8 @@
 #include <string>
 
 /**
-\file contains the \ref num_node declaration
+\file 
+\brief contains the \ref num_node declaration
 
 \class num_node
 \brief the node containing the \ref big_num representaion of number

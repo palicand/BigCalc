@@ -3,7 +3,9 @@
 #include "base_node.h"
 
 /**
-\file contains the declaration of \ref op_node
+\file 
+\brief contains the declaration of \ref op_node
+
 \class op_node
 \brief the base abstract class for operators
 \details This class is intended as a base class for operators. It gives access to left and right subexpressions for every class that is derived from it. 
@@ -22,8 +24,8 @@
 \details Recursivelly computes the value of the expression. It first calls eval() on both left and right subtrees, therefore recursively descents until it reaches \ref num_node
 which just returns the \ref big_num representation. It then performs it's respective operation with the returned values.
 
-\var left the left subtree
-\var right the right subtree
+\var op_node::left the left subtree
+\var op_node::right the right subtree
 */
 class op_node :
 	public base_node

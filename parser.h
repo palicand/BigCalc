@@ -20,6 +20,20 @@ and by http://math.hws.edu/javanotes/c9/s5.html. It recursively costructs the tr
 \fn parser::parser(const std::string&)
 \brief the constructor of parser
 \param str the string to be parsed
+
+\fn parser::parse(const std::string&)
+\brief parses the input string
+\details The only public method of the class. It receives the input string, creates a parser object and then parses the string. 
+\param str The input string
+\return The root of the syntactic tree
+
+\class parse_exception
+\brief The exception that is thrown while parsing
+\details The exception is thrown while a problem is encountered while the string is being parsed, for example when parentheses aren't corretly paired, or when there are unexpected/invalid characters in the string
+
+\fn parse_exception::parse_exception(const std::string&)
+\brief constructor for the exception
+\param msg The error message
 */
 
 class parse_exception : public std::runtime_error

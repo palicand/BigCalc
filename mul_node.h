@@ -7,7 +7,7 @@
 \file 
 \brief contains the declaration of \ref mul_node
 
-\class add_node
+\class mul_node
 \brief the node representing the multiplication operation
 
 

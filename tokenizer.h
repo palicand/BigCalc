@@ -7,7 +7,7 @@
 
 \class tokenizer
 \brief Tokenizes the input string
-\details Stores the string into its member variable \ref str and returns each token by calling \ref next_token(const std::string&).
+\details Stores the string into its member variable tokenizer::str and returns each token by calling tokenizer::next_token(const std::string&).
 \fn tokenizer::tokenizer(const std::string&)
 \brief constructs the tokenizer with the passed string
 \param input_str the strig to be tokenized

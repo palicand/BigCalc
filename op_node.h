@@ -5,7 +5,7 @@ class op_node :
 	public base_node
 {
 public:
-	op_node(base_node* left, base_node* right);
+	op_node(const base_node* left, const base_node* right);
 	virtual ~op_node(void);
 	virtual big_num eval() const = 0;
 protected:

@@ -67,6 +67,7 @@ int file_input_mode(const std::string& filename)
 	}
 	if(input.fail())
 	{
+		input.close();
 		throw bad_file_exception("There was a problem while I've been reading the file - it's probably corrupted");
 	}
 	return 0;

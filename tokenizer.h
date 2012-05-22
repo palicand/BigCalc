@@ -8,6 +8,10 @@
 \class tokenizer
 \brief Tokenizes the input string
 \detail Stores the string into its member variable \ref str and returns each token by calling \ref next_token(const std::string&).
+\fn tokenizer::tokenizer(const std::string&)
+\brief constructs the tokenizer with the passed string
+\param input_str the strig to be tokenized
+
 \fn tokenizer::next_token()
 \brief gets the next token from the string
 \detail It skips all the whitespace characters and hen either returns the next character, or, if the next character is a digit, it returns the whole number 

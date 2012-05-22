@@ -6,10 +6,14 @@
 \def __PONY__ 
 \brief This define makes the source about 20% cooler!
 
-\exception bad_file_exception
+\class bad_file_exception
 \brief Thrown when user enters bad comand-line arguments
 \detailed Gets thrown only in \ref file_input_mode(const string&) when the file either doesn't exist, the user doesn't have enough permissions to open it or if it was somehow
 corrupted
+
+\fn bad_file_exception::bad_file_exception(const std::string&)
+\brief constructs the exception with the specified error message
+\param msg the error message describing what went wrong
 
 \fn interactive_mode()
 \brief The interactive mode of the application
@@ -107,24 +111,15 @@ int file_input_mode(const std::string& filename)
 	return 0;
 }
 
-int get_mode(int argc, char** argv)
-{
-	if(argc == 1)
-		return 0;
-	else
-		return 1;
-}
-
 int main(int argc, char** argv)
 {
-	int mode = get_mode(argc, argv);
 	std::string line;
 	int ret;
-	if(mode == 0)
+	if(argc == 1)
 	{
 		ret = interactive_mode();
 	}
-	else
+	else if(argc == 2)
 	{
 		std::string filename(argv[1]);
 		try {
@@ -135,6 +130,11 @@ int main(int argc, char** argv)
 			std::cerr << e.what() << std::endl;
 			return 1;
 		}
+	}
+	else
+	{
+		std::cerr << "bad number of arguments, please refer to documentation for the right arguments\n";
+		return 1;
 	}
 	return ret;
 

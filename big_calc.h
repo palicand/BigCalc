@@ -9,7 +9,7 @@
 \ret returns 0 or 1 if everything's in order, that means if we got 1 argument and it's 0, or 2 arguments and they're zero and a filename; otherwise, return -1
 */
 
-int get_mode(int argc, char** argv);
+int get_mode(int argc);
 int interactive_mode();
 int file_input_mode(const std::string& filename);
 void open_file(const std::string& filename);

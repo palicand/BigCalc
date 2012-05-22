@@ -280,7 +280,7 @@ void big_num::invert()
 
 void big_num::add_to(size_t i, byte n)
 {
-	std::cout << "adding to " << i << std::endl;
+	//std::cout << "adding to " << i << std::endl;
 	if(i > (number.size() - 1))
 	{
 		if(negative)

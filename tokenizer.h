@@ -7,13 +7,23 @@
 
 \class tokenizer
 \brief Tokenizes the input string
+\detail Stores the string into its member variable \ref str and returns each token by calling \ref next_token(const std::string&).
+\fn tokenizer::next_token()
+\brief gets the next token from the string
+\detail It skips all the whitespace characters and hen either returns the next character, or, if the next character is a digit, it returns the whole number 
+(including up to one decimal point).
+\return a token to be parsed by \ref parser
+\fn get_nuber()
+\brief gets all the digits of a number
+\detail called by \ref next_token() whe a digit is encountered, it iterates through the string until something else that can't belong to a number is encountered.
+It stores the number in the \ref number member variable
 
-It receives a string as a parameter of its static method \ref tokenizer::tokenize(const std::string&) and outputs an array of tokens, 
-which is then parsed by the \ref parser. Since it's meant to be used only in this program, it isn't very flexible, you cannot set your own delimiter and you cannot create more instances of it.
-
-\fn tokenizer::tokenize(const std::string &str)
-This function is the only public member of the \ref tokenizer. It receives the string and internally creates a \ref tokenizer object, that then creates the tokens.
-
+\var str
+\brief the tokenized string
+\var pos
+\brief current position in string
+\var number
+\brief if a number is found, it is temporarily stored in this member variable
 */
 
 #include <string>

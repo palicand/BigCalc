@@ -2,6 +2,7 @@
 #include <iterator>
 #include <sstream>
 #include <cctype>
+
 tokenizer::tokenizer(const std::string& input_str) : str(input_str)
 {
 	pos = 0;

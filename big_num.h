@@ -123,7 +123,7 @@ public:
 	/**
 	\brief Prints the number to the defined output stream
 	\param os the output stream
-	\param c the number to be printed
+	\param num the number to be printed
 	\return the modified output stream
 	*/
 	friend std::ostream& operator<<(std::ostream& os, const big_num& num);

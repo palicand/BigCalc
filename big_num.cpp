@@ -3,7 +3,7 @@
 
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
-const size_t big_num::START_ALLOCATION = 1;
+const size_t big_num::START_ALLOCATION = 1000;
 big_num::big_num(signed char n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;

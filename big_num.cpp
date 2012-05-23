@@ -1,6 +1,7 @@
 #include "big_num.h"
 #include <algorithm>
 
+
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
 const size_t big_num::START_ALLOCATION = 1000;

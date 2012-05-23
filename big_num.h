@@ -1,5 +1,6 @@
 #ifndef __BIG_NUM_H__
 #define __BIG_NUM_H__
+
 /**
 \file
 \brief contains the declaration of the \ref big_num class

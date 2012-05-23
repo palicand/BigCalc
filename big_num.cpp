@@ -182,9 +182,9 @@ big_num& operator*=(big_num& a, const big_num& b)
 	return a;
 }
 
-std::ostream& operator<<(std::ostream& os, const big_num& c)
+std::ostream& operator<<(std::ostream& os, const big_num& num)
 {
-	os << c.to_string();
+	os << num.to_string();
 	return os;
 }
 

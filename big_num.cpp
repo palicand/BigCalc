@@ -3,7 +3,7 @@
 
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
-const size_t big_num::START_ALLOCATION = 1000;
+const size_t big_num::START_ALLOCATION = 1;
 big_num::big_num(signed char n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;
@@ -132,10 +132,6 @@ big_num& operator*=(big_num& a, const big_num& b)
 	big_num ret;
 	double_byte carry = 0, temp_res = carry;
 	size_t upper_limit = a.filled_blocks + b.filled_blocks;
-	if(a.negative != b.negative)
-		ret.negative = true;
-	else
-		ret.negative = false;
 	big_num tempA = a;
 	big_num tempB = b;
 	tempA.set_same_size(tempB);
@@ -158,7 +154,7 @@ big_num& operator*=(big_num& a, const big_num& b)
 		//j - index na b, k - index na a
 		size_t k = (i < a.filled_blocks) ? i : a.filled_blocks;
 		size_t j = i - k;
-		while(j <= b.filled_blocks && (k >= 0 && k != (size_t)0-1))
+		while(j <= tempB.filled_blocks && (k >= 0 && k != (size_t)0-1 && k<tempA.number.size()))
 		{
 			temp_res += (double_byte) tempA.number[k] * tempB.number[j];
 			carry += (temp_res >> (big_num::BITS));
@@ -172,6 +168,12 @@ big_num& operator*=(big_num& a, const big_num& b)
 	}
 	if(carry != 0)
 		ret.add_to(i, (byte)carry);
+
+	if(a.negative != b.negative)
+		ret.negative = true;
+	else
+		ret.negative = false;
+
 	if(ret.negative)
 		ret.invert();
 	ret.decimal = a.decimal + b.decimal;
@@ -190,13 +192,23 @@ bool big_num::operator==(const big_num& other) const
 {
 	if(this->negative != other.negative)
 		return false;
-	size_t i = 0;
-	while(i < number.size() && number[i] == other.number[i])
-		i++;
-	if(i == number.size())
-		return true;
-	else
-		return false;
+	size_t i = (number.size() > other.number.size()) ? number.size() - 1 : other.number.size() - 1;
+	while(i >= 0 && i != (size_t)0-1)
+	{
+		byte left, right;
+		if(i < number.size())
+			left = number[i];
+		else
+			left = 0;
+		if(i < other.number.size())
+			right = other.number[i];
+		else
+			right = 0;
+		if(left != right)
+			return false;
+		i--;
+	}
+	return true;
 }
 
 

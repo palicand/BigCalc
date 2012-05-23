@@ -3,7 +3,7 @@
 
 const byte big_num::MAX_NUM = 0 - 1;
 const int big_num::BITS = CHAR_BIT * sizeof(byte);
-const size_t big_num::START_ALLOCATION = 4;
+const size_t big_num::START_ALLOCATION = 1000;
 big_num::big_num(signed char n) : number(big_num::START_ALLOCATION, 0)
 {
 	filled_blocks = 1;
@@ -359,33 +359,29 @@ std::string big_num::to_string() const
 		temp.negative = false;
 		temp.invert();
 	}
-	bool point = false;
+	bool show_point = true;
 	if(temp.decimal == 0)
-		point = true;
+		show_point = false;
 	while(temp > 0)
 	{
 		res += ('0' + temp % 10);
 		temp/=10;
-		if(temp.decimal == 0 && !point)
-		{
-			res+='.';
-			point = true;
-		}
-		else if(temp.decimal != 0)
+		if(temp.decimal != 0)
 			temp.decimal--;
-	}
-	while(temp.decimal != 0 || !point)
-	{
-		if(temp.decimal == 0)
+		if(temp.decimal == 0 && show_point)
 		{
-			point = true;
-			res += ".0";
+			res += ".";
+			show_point = false;
 		}
-		else
+	}
+	if(show_point)
+	{
+		while(temp.decimal > 1)
 		{
 			res += "0";
 			temp.decimal--;
 		}
+		res += "0.";
 	}
 	if(*(res.end()-1) == '.')
 		res += '0';

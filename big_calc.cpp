@@ -48,6 +48,7 @@ int file_input_mode(const std::string& filename)
 	int expr_n = 1;
 	while(!input.eof() && !input.fail())
 	{
+		std::cout << "expression " << expr_n << std::endl;
 		std::getline(input, line);
 		try {
 			expr = parser::parse(line);

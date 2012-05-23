@@ -26,13 +26,15 @@ int interactive_mode()
 		catch(parse_exception& e)
 		{
 			std::cerr << "parse pony is very sad :-(\nerror: " << e.what() << std::endl;
-			delete expr;
+			if(expr != NULL);
+				delete expr;
 			expr = NULL;
 		}
 		if(expr != NULL)
 		{
 			std::cout << "Result: " << expr->eval() << std::endl;
  			delete expr;
+			expr = NULL;
 		}
 	}
 	return 0;
@@ -56,7 +58,8 @@ int file_input_mode(const std::string& filename)
 		catch(parse_exception& e)
 		{
 			std::cerr << "parse pony is very sad :-(\n problem with expression " << expr_n << ": "<< e.what() << std::endl;
-			delete expr;
+			if(expr != NULL)
+				delete expr;
 			expr = NULL;
 		}
 		if(expr != NULL)

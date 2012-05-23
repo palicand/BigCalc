@@ -76,8 +76,10 @@ big_num& operator+=(big_num& a, const big_num& b)
 	double_byte carry = 0;
 	size_t i = 0;
 	big_num tempB = b;
+	//a and b must have the same size and same number of decimals
 	a.normalize(tempB);
 	a.set_same_size(tempB);
+	//check, if number is the same
 	if(a.abs() == tempB.abs() && a.negative != tempB.negative)
 	{
 		return (a=0);
@@ -113,7 +115,6 @@ big_num& operator+=(big_num& a, const big_num& b)
 		res.negative = negative;
 		if(res.negative)
 			std::fill(res.number.begin() + i, res.number.end(), big_num::MAX_NUM);
-			//memset(res.number+i, big_num::MAX_NUM, (res.number.size()-i)*sizeof(byte));
 		else
 			std::fill(res.number.begin() + i, res.number.end(), 0);
 	}

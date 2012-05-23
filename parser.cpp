@@ -5,6 +5,7 @@
 #include "num_node.h"
 #include "sub_node.h"
 #include "mul_node.h"
+#include "unary_sub_node.h"
 //influenced by Mr. Vagner's class and http://math.hws.edu/javanotes/c9/s5.html
 base_node* parser::parse(const std::string&str)
 {
@@ -14,6 +15,7 @@ base_node* parser::parse(const std::string&str)
 
 parser::parser(const std::string& str) : str(str), tok(str)
 {
+	negative_expr = false;
 }
 
 /**
@@ -34,11 +36,18 @@ base_node* parser::get_expression()
 {
 	//current_token = tok.next_token();
 	base_node* res = NULL;
-	/*if(current_token == "-")
+	if(current_token == "-")
 	{
-	}*/
+		negative_expr = true;
+		current_token = tok.next_token();
+	}
 	try {
 		res = get_term();
+		if(negative_expr)
+		{
+			res = new unary_sub_node(res);
+			negative_expr = false;
+		}
 		while(current_token == "+" || current_token == "-")
 		{
 			if(current_token == "+")

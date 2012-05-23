@@ -16,7 +16,7 @@
 
 \fn unary_sub_node::eval() const
 \brief creates a negative expression
-\details calls the \ref base_node::eval() on the \ref unary_sub_node::child and then uses the \ref big_num::operator-() const on it
+\details calls the \ref base_node::eval() on the \ref unary_sub_node::child and then uses the big_num::operator() on it
 \return the result of the addition
 
 \fn unary_sub_node::~unary_sub_node()

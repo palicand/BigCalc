@@ -5,6 +5,24 @@
 \file
 \brief This file contains ponies and  the main function
 */
+
+/**
+\mainpage PA2 project
+\section Description
+Evaluates the mathematical expressions with arbitrarily long numbers. Valid expressions may contain operators +, - (binary and unary), * and () (with no limit on the level of nesting). 
+You must provide both operands for all binary operators, and all parentheses must be paired. A valid operand is either just a number, or a subexpression in parentheses.
+
+\section Usage
+There are two modes of usage:
+<ol>
+	<li>Interactive mode</li>
+	<li>File input mode</li>
+</ol>
+
+\par You enter interactive mode just by running the program without any command-line arguments. It reads expressions line by line until it receives an EOF or until it receives a line containing only character "q".
+\par To trigger file input mode, you have to pass a input file on a command line. It then evaluates each line and prints the result with the order number of the expression.
+*/
+
 /**
 \def __PONY__ 
 \brief This define makes the source about 20% cooler!
@@ -28,7 +46,7 @@ input is incorrectly formatted, an error message describing the mistake in the i
 \brief Reads the expressions from the input file
 \param filename The name of the input file
 \return Returns 0, if everything went all right or throws the \ref bad_file_exception if there was a problem while opening or reading the file
-\details While in the file input mode, the program reads expressions separated either by a newline or a semicolon. Each result is printed on a new line. If some expression
+\details While in the file input mode, the program reads expressions separated by a newline. Each result is printed on a new line. If some expression
 was in incorrect format, it prints the error and corresponding number of the expression and the continues computing the others
 
 \fn main(int, char**)

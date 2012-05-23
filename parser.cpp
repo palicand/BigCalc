@@ -15,7 +15,7 @@ base_node* parser::parse(const std::string&str)
 
 parser::parser(const std::string& str) : str(str), tok(str)
 {
-	negative_expr = false;
+
 }
 
 /**
@@ -40,6 +40,7 @@ base_node* parser::get_expression()
 {
 	//current_token = tok.next_token();
 	base_node* res = NULL;
+	bool negative_expr = false;
 	if(current_token == "-")
 	{
 		negative_expr = true;

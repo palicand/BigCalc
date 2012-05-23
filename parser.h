@@ -61,6 +61,5 @@ private:
 	tokenizer tok;
 	std::string str;
 	std::string current_token;
-	bool negative_expr;
 };
 #endif

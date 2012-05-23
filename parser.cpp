@@ -64,8 +64,8 @@ base_node* parser::get_expression()
 	}
 	catch(parse_exception& e)
 	{
-		delete res;
-
+		if(res != NULL)
+			delete res;
 		throw;
 	}
 	return res;
@@ -88,7 +88,8 @@ base_node* parser::get_term()
 	}
 	catch(parse_exception& e)
 	{
-		delete res;
+		if(res != NULL)
+			delete res;
 		throw;
 	}
 	return res;

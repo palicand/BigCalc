@@ -63,6 +63,7 @@ int file_input_mode(const std::string& filename)
 		{
 			std::cout << expr->eval() << std::endl;
 			delete expr;
+			expr = NULL;
 		}
 		expr_n++;
 	}

@@ -132,20 +132,62 @@ public:
 	*/
 	big_num abs() const;
 private:
+	/**
+	\brief the array of numbers
+	*/
 	std::vector<byte> number;
+	/**
+	number of decimal digits
+	*/
 	size_t decimal;
+	/**
+	\brief number of blocks filled with something meaningful
+	*/
 	size_t filled_blocks;
+	/**
+	\brief is nmber negative?
+	*/
 	bool negative;
+
+	/**
+	\brief the max value in one element of n. array
+	*/
 	static const byte MAX_NUM;
+	/**
+	\brief number of bits in one component
+	*/
 	static const int BITS;
+	/**
+	\brief the startig allocation size
+	*/
 	static const size_t START_ALLOCATION;
+	/**
+	\brief gets number from src
+	*/
 	void from_string(const std::string& src);
+	/**
+	\brief coverts number to string
+	*/
 	std::string to_string() const;
-	void add_digit(char digit);
+	/**
+	\brief inverts all the numbers in the array
+	*/
 	void invert();
+	/**
+	\brief inserts n at position i in the number array, resizes the array if needed
+	*/
 	void add_to(size_t i, byte n);
+	/**
+	\brief sets the numbers to have the same number of decimal digits by calling the dec_shift_left while also increasing the number of decimal digits
+	*/
 	void normalize(big_num& other);
+	/**
+	\brief multiplies the number n times by 10
+	*/
 	void dec_shift_left(size_t n);
+	/**
+	\brief resizes the  number array to the same size if it's different
+	*/
 	void set_same_size(big_num& other);
 
 	bool operator==(const big_num& other) const;

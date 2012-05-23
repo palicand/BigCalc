@@ -48,18 +48,31 @@ public:
 
 	static base_node* parse(const std::string& str);
 private:
-	enum {NUM, ADD, SUB, MUL, LPAR, RPAR};
+	/**
+	\brief constructs the parser
+	*/
 	parser(const std::string& str);
+
+	/** \brief creates the syntactic tree */
 	base_node* create_tree();
 	
+	/** \brief parses the expression */
 	base_node* get_expression();
+
+	/** \brief parses the term */
 	base_node* get_term();
+	/** \brief parses the factor */
 	base_node* get_factor();
 	
+	/** \brief checks if token is string */
 	bool is_number(const std::string& str) const;
 
+	/** \brief the tokenizer */
 	tokenizer tok;
+
+	/**\brief the string that is being parsed */
 	std::string str;
+	/** \brief the current toke */
 	std::string current_token;
 };
 #endif

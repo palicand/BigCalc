@@ -149,18 +149,17 @@ big_num& operator*=(big_num& a, const big_num& b)
 	size_t i;
 	for(i = 0; i <= upper_limit; i++)
 	{
-		//carry z predchadzajucej iteracie
+		//carry from the past iteration
 		temp_res = carry;
 		carry = 0;
-		//j - index na b, k - index na a
+		//j - index for the b, k index for a
 		size_t k = (i < a.filled_blocks) ? i : a.filled_blocks;
 		size_t j = i - k;
+		//we'llmultiply each component with the other
 		while(j <= tempB.filled_blocks && (k >= 0 && k != (size_t)0-1 && k<tempA.number.size()))
 		{
 			temp_res += (double_byte) tempA.number[k] * tempB.number[j];
 			carry += (temp_res >> (big_num::BITS));
-			//if(ret.negative)
-				
 			temp_res &=  big_num::MAX_NUM;
 			j++;
 			k--;

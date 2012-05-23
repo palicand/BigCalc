@@ -28,7 +28,11 @@ base_node* parser::create_tree()
 	current_token = tok.next_token();
 	node = get_expression();
 	if(current_token != "")
+	{
+		if(node != NULL)
+			delete node;
 		throw parse_exception("invalid characters at the end of the input");
+	}
 	return node;
 }
 
